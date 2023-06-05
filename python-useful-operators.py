@@ -46,3 +46,11 @@
 # celcius = [0, 10, 20, 34.5]
 # fahrenheit = [((9/5)*temp + 32) for temp in celcius]
 # print('This will print the list of celcius converted to fahrenheit', fahrenheit)
+
+# result = 1
+# for i in range(1, 11):
+#     result *= i
+# print('This will print the factorial of 10', result)
+# This is because range is (start, stop, step). So it will start at 1, stop at 11, and step by 1. So it will go from 1 to 10.
+# With 1 number in range it will be the stop number. With 2 numbers in range it will be the start and stop numbers. With 3 numbers in range it will be the start, stop, and step numbers.
+
