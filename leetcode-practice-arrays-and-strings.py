@@ -430,11 +430,12 @@
 # t = ['a','c','e']
 
 # def subsequence(s:list, t:list) -> bool:
-#     ans = []
 #     i=j=0
+#     ans=[]
+
 #     while i < len(s) and j < len(t):
 #         if s[i] == t[j]:
-#             ans.append(s[i])
+#             ans += s[i]
 #             i+=1
 #             j+=1
 #         elif s[i] != t[j]:
@@ -443,7 +444,8 @@
 #             j+=1
 #     if ans == s or ans == t:
 #         return True
-#     return False
+#     else:
+#         return False
 
 # result = subsequence(s,t)
 # print('this is subsequence ', result)
@@ -451,6 +453,14 @@
 # s = ["h","e","l","l","o"]
 
 # class Solution:
+#     def reversed_string(s):
+#         left = 0
+#         right = len(s) - 1
+#         while left < right:
+#             s[left], s[right] = s[right], s[left]
+#             left+=1
+#             right-=1
+#         return s
 
 # solution = Solution.reversed_string(s)
 # print(s)
@@ -461,31 +471,76 @@
 
 
 # word1 = "abc" 
-# word2 = "pqr"
+# word2 = "pqrtq"
 
-# def merged_string(word1 = str, word2 = str) -> str:
-#     merged=""
-#     i = j = 0
-#     while i < len(word1) and j < len(word2) :
-#         merged += word1[i]
-#         merged += word2[j]
-#         i+=1
-#         j+=1
-#     if i < len(word1):
-#         merged += word1[i]
-#     if j < len(word2):
-#         merged += word2[j]
-#     return merged
+# def merged_string(word1, word2):
+#     merged = ""
+#     i=j=0
+
+#     while i < len(word1) or j < len(word2):
+#         if i < len(word1):
+#             merged += word1[i]
+#             i+=1
+#         if j < len(word2):
+#             merged += word2[j]
+#             j+=1
+#     return merged   
 
 # result = merged_string(word1, word2)
 
 # print(result)
 
 # def merged_alternate(word1: str = "", word2: str = "") -> str:
-#     merged = ""
+#     merged=""
 #     for word1, word2 in zip_longest(word1, word2, fillvalue=""):
-#         merged+=word1+word2
+#         merged += word1+word2
 #     return merged
 
 # result = merged_alternate(word1,word2)
 # print(result)
+
+# from math import gcd
+
+# def gcd_of_strings(str1: str, str2: str) -> str:
+#     if str1 + str2 != str2 + str1:
+#         return ""
+#     return str1[:gcd(len(str1), len(str2))]
+# result = gcd_of_strings("ababab", "abab")
+# print(result)
+
+candies = [2,3,5,1,3]
+extra_candies = 3
+
+def kids_with_candies(candies: list[int], extra_candies:int) -> list[bool]:
+    max_candies = max(candies)
+    solution = []
+
+    for candy in candies: 
+        solution.append(candy + extra_candies >= max_candies)
+
+    return solution
+   
+solution = kids_with_candies([2,3,5,1,3], 3)
+print(solution)
+
+# s = "hello"
+
+# def reverse_vowels(s):
+#     left = 0
+#     right = len(s)-1
+#     vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+#     s = list(s)
+
+#     while left < right:
+#         if s[left] in vowels and s[right] in vowels:
+#             s[left], s[right] = s[right], s[left]
+#             left+=1
+#             right-=1
+#         elif s[left] in vowels:
+#             right -= 1
+#         else:
+#             left+=1
+#     return "".join(s)
+
+# solution = reverse_vowels(s)
+# print(solution)
