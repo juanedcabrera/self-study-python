@@ -508,39 +508,135 @@
 # result = gcd_of_strings("ababab", "abab")
 # print(result)
 
-candies = [2,3,5,1,3]
-extra_candies = 3
+# candies = [2,3,5,1,3]
+# extra_candies = 3
 
-def kids_with_candies(candies: list[int], extra_candies:int) -> list[bool]:
-    max_candies = max(candies)
-    solution = []
+# def kids_with_candies(candies: list[int], extra_candies:int) -> list[bool]:
+#     max_candies = max(candies)
+#     solution = []
 
-    for candy in candies: 
-        solution.append(candy + extra_candies >= max_candies)
+#     for candy in candies: 
+#         solution.append(candy + extra_candies >= max_candies)
 
-    return solution
+#     return solution
    
-solution = kids_with_candies([2,3,5,1,3], 3)
-print(solution)
+# solution = kids_with_candies([2,3,5,1,3], 3)
+# print(solution)
 
 # s = "hello"
 
 # def reverse_vowels(s):
-#     left = 0
-#     right = len(s)-1
 #     vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 #     s = list(s)
+#     left = 0
+#     right = len(s) - 1
 
 #     while left < right:
 #         if s[left] in vowels and s[right] in vowels:
 #             s[left], s[right] = s[right], s[left]
 #             left+=1
 #             right-=1
-#         elif s[left] in vowels:
-#             right -= 1
-#         else:
+#         if s[left] not in vowels:
 #             left+=1
+#         if s[right] not in vowels:
+#             right-=1
 #     return "".join(s)
 
 # solution = reverse_vowels(s)
+# print(solution)
+
+# nums = [1,2,3,4]
+# def productExceptSelf(nums):
+#     n = len(nums)
+#     prefix = [1] * n
+#     suffix = [1] * n
+#     answer = [0] * n
+
+#     # Calculate prefix products
+#     for i in range(1, n):
+#         prefix[i] = prefix[i-1] * nums[i-1]
+
+#     # Calculate suffix products
+#     for i in range(n-2, -1, -1):
+#         suffix[i] = suffix[i+1] * nums[i+1]
+
+#     # Calculate answer array
+#     for i in range(n):
+#         answer[i] = prefix[i] * suffix[i]
+
+#     return answer
+
+# solution = productExceptSelf(nums)
+# print(solution)
+
+# nums = [25,4,3,2,1]
+# def increasing_triple(nums):
+#     smallest = float("inf")
+#     second_smallest = float("inf")
+
+#     for num in nums:
+#         if num <= smallest:
+#             smallest == num
+#         elif num <= second_smallest:
+#             second_smallest == num
+#         else:
+#             return True
+#     return False
+           
+# solution = increasing_triple(nums)
+# print(solution)
+
+chars = ["a", "a", "b", "b", "c", "c", "c"]
+
+def compressed(chars):
+    # Create an empty list to store the compressed characters
+    compressed_chars = []
+    n = len(chars)
+
+    # Loop through the original list of characters
+    i = 0
+    while i < n:
+        char = chars[i]
+        count = 1
+
+        # Check if the next character is the same
+        while i + 1 < n and chars[i] == chars[i + 1]:
+            i += 1
+            count += 1
+
+        # Add the character to the compressed list
+        compressed_chars.append(char)
+
+        # If the character repeats, add the count to the compressed list
+        if count > 1:
+            compressed_chars.append(str(count))
+
+        i += 1
+    return compressed_chars
+
+# Call the compressed function with the chars list and print the result
+compressed_list = compressed(chars)
+print("Compressed list:", compressed_list)
+print("Length of compressed list:", len(compressed_list))
+
+# nums = [0,1,0,3,12]
+
+# def move_zero(nums):
+#     left = 0
+#     right = 0
+#     n = len(nums)
+
+#     while right < n:
+#         if nums[right]!=0:
+#             print(left)
+#             nums[left] = nums[right]
+#             left+=1
+#         right+=1
+
+#     while left < n:
+#         nums[left] = 0
+#         left+=1
+#     return nums
+
+# solution = move_zero(nums)
 # print(solution)
