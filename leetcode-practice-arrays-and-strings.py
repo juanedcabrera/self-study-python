@@ -586,38 +586,38 @@
 # solution = increasing_triple(nums)
 # print(solution)
 
-chars = ["a", "a", "b", "b", "c", "c", "c"]
+# chars = ["a", "a", "b", "b", "c", "c", "c"]
 
-def compressed(chars):
-    # Create an empty list to store the compressed characters
-    compressed_chars = []
-    n = len(chars)
+# def compressed(chars):
+#     # Create an empty list to store the compressed characters
+#     compressed_chars = []
+#     n = len(chars)
 
-    # Loop through the original list of characters
-    i = 0
-    while i < n:
-        char = chars[i]
-        count = 1
+#     # Loop through the original list of characters
+#     i = 0
+#     while i < n:
+#         char = chars[i]
+#         count = 1
 
-        # Check if the next character is the same
-        while i + 1 < n and chars[i] == chars[i + 1]:
-            i += 1
-            count += 1
+#         # Check if the next character is the same
+#         while i + 1 < n and chars[i] == chars[i + 1]:
+#             i += 1
+#             count += 1
 
-        # Add the character to the compressed list
-        compressed_chars.append(char)
+#         # Add the character to the compressed list
+#         compressed_chars.append(char)
 
-        # If the character repeats, add the count to the compressed list
-        if count > 1:
-            compressed_chars.append(str(count))
+#         # If the character repeats, add the count to the compressed list
+#         if count > 1:
+#             compressed_chars.append(str(count))
 
-        i += 1
-    return compressed_chars
+#         i += 1
+#     return compressed_chars
 
-# Call the compressed function with the chars list and print the result
-compressed_list = compressed(chars)
-print("Compressed list:", compressed_list)
-print("Length of compressed list:", len(compressed_list))
+# # Call the compressed function with the chars list and print the result
+# compressed_list = compressed(chars)
+# print("Compressed list:", compressed_list)
+# print("Length of compressed list:", len(compressed_list))
 
 # nums = [0,1,0,3,12]
 
@@ -640,3 +640,32 @@ print("Length of compressed list:", len(compressed_list))
 
 # solution = move_zero(nums)
 # print(solution)
+
+# Given an array of integers nums, you start with an initial positive value startValue.
+
+# In each iteration, you calculate the step by step sum of startValue plus elements in nums (from left to right).
+
+# Return the minimum positive value of startValue such that the step by step sum is never less than 1.
+
+def minStartValue(nums,startValue,threshold):
+
+    while True:
+        cumulative_sum = startValue
+        found = True
+
+        for num in nums:
+            cumulative_sum += num
+            if cumulative_sum < threshold:
+                found = False
+                break
+
+        if found:
+            return startValue
+        
+        startValue += 1
+
+# Example usage
+nums = [-3, 2, -3, 4, 2]
+threshold = 1
+result = minStartValue(nums, 4, threshold)
+print(result)
